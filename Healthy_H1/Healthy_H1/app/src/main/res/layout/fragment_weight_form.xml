@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="35dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/weight_form_back_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/weight_form_back_btn"
+                android:background="@color/colorPrimary"
+                android:textColor="@android:color/background_light"/>
+
+
+            <EditText
+                android:id="@+id/weight_form_weighing_date"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:hint="@string/weight_form_weighing_date"/>
+
+            <EditText
+                android:id="@+id/weight_form_weight"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:hint="@string/weight_form_weight"/>
+
+            <Button
+                android:id="@+id/weight_form_save_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/weight_form_save_btn"
+                android:background="@color/colorPrimary"
+                android:textColor="@android:color/background_light"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

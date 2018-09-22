@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Healthy</string>
+
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="re_password">Re-Password</string>
+    <string name="login">LOGIN</string>
+    <string name="new_regsiter">Register New Account</string>
+    <string name="register">REGISTER NEW ACCOUNT</string>
+
+    <string name="bmi_height">Height (cm)</string>
+    <string name="bmi_width">Weight (cm)</string>
+    <string name="bmi_button_calculate">CALCULATE</string>
+    <string name="bmi_back_btn">Back</string>
+
+    <string name="weight_add_weight_btn">Add Weight</string>
+
+    <string name="weight_form_back_btn">ย้อนกลับ</string>
+    <string name="weight_form_weighing_date">วันที่ชั่ง</string>
+    <string name="weight_form_weight">น้ำหนัก (kg)</string>
+    <string name="weight_form_save_btn">บันทึก</string>
+</resources>
