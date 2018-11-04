@@ -19,4 +19,13 @@
     <string name="weight_form_weighing_date">วันที่ชั่ง</string>
     <string name="weight_form_weight">น้ำหนัก (kg)</string>
     <string name="weight_form_save_btn">บันทึก</string>
+
+    <string name="sleep_form_save_time">Add Time Sleep</string>
+    <string name="sleep_form_weighing_date">วันที่</string>
+    <string name="sleep_form_start_sleep">เริ่มนอน (ชั่งโมง)</string>
+    <string name="sleep_form_start_sleep_min">เริ่มนอน (นาที)</string>
+    <string name="sleep_form_end_sleep">ตื่นนอน (ชั่งโมง)</string>
+    <string name="sleep_form_end_sleep_min">ตื่นนอน (นาที)</string>
+    <string name="sleep_form_save_btn">บันทึก</string>
+    <string name="sleep_form_back_btn">ย้อนกลับ</string>
 </resources>
