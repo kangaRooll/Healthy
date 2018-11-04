@@ -80,40 +80,64 @@ public class SleepFormFragment extends Fragment {
                     int _timetowakeupMinInt = Integer.parseInt(_timetowakeupSplit[1]);
                     int resultHour = 0;
                     int resultMin = 0;
+
                     int calculateHour = 0;
                     int calculateMin = 0;
-                    if(_timetosleepHourInt > _timetowakeupHourInt)
+
+
+                    if (_timetosleepHourInt > _timetowakeupHourInt){
+                        calculateHour = Math.abs((24 - _timetosleepHourInt) + _timetowakeupHourInt);
+                    }else {//_timetosleepHourInt <= _timetowakeupHourInt
+                        calculateHour = Math.abs(_timetowakeupHourInt - _timetosleepHourInt);
+                    }
+                    if(_timetosleepMinInt > _timetowakeupMinInt){
+                        if (_timetosleepMinInt > 30){
+                            calculateMin = Math.abs( (60 -_timetosleepMinInt) + _timetowakeupMinInt);
+                        }else {
+                        if(_timetowakeupMinInt == 0 && _timetosleepMinInt != 0){_timetowakeupMinInt = 60;}
+                        calculateMin = Math.abs( _timetosleepMinInt - _timetowakeupMinInt);}
+                        calculateHour -= 1;
+                    }
+                    else if(_timetosleepMinInt < _timetowakeupMinInt){
+                        if (_timetowakeupMinInt > 30){
+                            calculateMin = Math.abs( _timetosleepMinInt + (60 -_timetowakeupMinInt));
+                        }else {
+
+                        calculateMin = Math.abs( _timetowakeupMinInt - _timetosleepMinInt);}
+                    }
+                    else{calculateMin = Math.abs( _timetowakeupMinInt - _timetosleepMinInt);}
+                 /*   if(_timetosleepHourInt > _timetowakeupHourInt)
                     {
                         calculateHour = Math.abs(24 - _timetosleepHourInt);
                         resultHour = calculateHour + _timetowakeupHourInt;
-                        calculateMin = Math.abs(00 - _timetosleepMinInt);
-                        resultMin = calculateMin + _timetowakeupMinInt;
                     }
                     else{
 
                         resultHour = Math.abs((_timetowakeupHourInt - _timetosleepHourInt));
 
-                        if(_timetosleepMinInt > _timetowakeupMinInt ) {
-                            calculateMin = Math.abs(0 - _timetosleepMinInt);
-                            if(_timetowakeupMinInt == 0){ resultMin = 60 - calculateMin;resultHour -= 1;}
-                            else{resultMin = _timetosleepMinInt - calculateMin;}
 
-                        }
-                        if(_timetosleepMinInt < _timetowakeupMinInt ){
-                                calculateMin = Math.abs(0 - _timetowakeupMinInt);
+                    }
+                    if(_timetosleepMinInt > _timetowakeupMinInt ) {
+                        calculateMin = Math.abs(0 - _timetosleepMinInt);
+                        if(_timetowakeupMinInt == 0){ resultMin = 60 - calculateMin;resultHour -= 1;}
+                        else{resultMin =  calculateMin -_timetowakeupMinInt ;}
 
-                                resultMin = Math.abs(_timetosleepMinInt - calculateMin);
-                            }
+                    }
+                    if(_timetosleepMinInt < _timetowakeupMinInt ){
+                        calculateMin = Math.abs(0 - _timetowakeupMinInt);
+                        if(_timetosleepMinInt == 0){ resultMin = 60 - calculateMin;resultHour += 1;}
+                        else{resultMin = Math.abs(_timetosleepMinInt - calculateMin);}
                     }
 
+*/
 
 
-                    String resultMinStr;
-                    if(resultMin == 0) {
-                        resultMinStr = "00";
-                        contentValues.put("counttime", resultHour + ":" + resultMinStr);
+                    String calculateMinStr;
+                    if(calculateMin == 0) {
+                        calculateMinStr = "00";
+                        contentValues.put("counttime", calculateHour + ":" + calculateMinStr);
                     } else {
-                        contentValues.put("counttime", resultHour + ":" + resultMin);
+                        contentValues.put("counttime", calculateHour + ":" + calculateMin);
                     }
 
                     if(sleep.getPrimaryId() == 0) {
