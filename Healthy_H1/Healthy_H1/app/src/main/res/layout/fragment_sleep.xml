@@ -1,63 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="35dp"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView"
-        app:layout_constraintTop_toTopOf="parent">
+        android:padding="10dp">
         <Button
             android:id="@+id/sleep_add_back_btn"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/colorPrimaryDark"
-            android:text="back"
-            android:textColor="@android:color/background_light" />
+            android:text="@string/sleep_form_back_btn"
+            android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/sleep_add_btn"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
             android:text="@string/sleep_form_save_time"
-            android:textColor="@android:color/background_light" />
+            android:textColor="@android:color/white" />
 
     </LinearLayout>
 
     <ScrollView
-        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="446dp"
+        android:layout_height="499dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        android:fillViewport="true"
+        android:padding="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:paddingLeft="35dp"
-            android:paddingRight="35dp">
-
-            <ProgressBar
-                android:id="@+id/sleep_loading"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"/>
+            android:orientation="vertical">
 
             <ListView
-                android:id="@+id/sleep_list"
+                android:id="@+id/sleep_sleeplist"
                 android:layout_width="match_parent"
-                android:layout_height="400dp">
-            </ListView>
+                android:layout_height="match_parent"></ListView>
 
         </LinearLayout>
+
     </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

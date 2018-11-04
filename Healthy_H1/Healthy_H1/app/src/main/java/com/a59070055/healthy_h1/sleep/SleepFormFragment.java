@@ -78,12 +78,35 @@ public class SleepFormFragment extends Fragment {
                     int _timetosleepMinInt = Integer.parseInt(_timetosleepSplit[1]);
                     int _timetowakeupHourInt = Integer.parseInt(_timetowakeupSplit[0]);
                     int _timetowakeupMinInt = Integer.parseInt(_timetowakeupSplit[1]);
+                    int resultHour = 0;
+                    int resultMin = 0;
+                    int calculateHour = 0;
+                    int calculateMin = 0;
+                    if(_timetosleepHourInt > _timetowakeupHourInt)
+                    {
+                        calculateHour = Math.abs(24 - _timetosleepHourInt);
+                        resultHour = calculateHour + _timetowakeupHourInt;
+                        calculateMin = Math.abs(00 - _timetosleepMinInt);
+                        resultMin = calculateMin + _timetowakeupMinInt;
+                    }
+                    else{
 
-                    int calculateHour = Math.abs(24 - _timetosleepHourInt);
-                    int calculateMin = Math.abs(00 - _timetosleepMinInt);
+                        resultHour = Math.abs((_timetowakeupHourInt - _timetosleepHourInt));
 
-                    int resultHour = calculateHour + _timetowakeupHourInt;
-                    int resultMin = calculateMin + _timetowakeupMinInt;
+                        if(_timetosleepMinInt > _timetowakeupMinInt ) {
+                            calculateMin = Math.abs(0 - _timetosleepMinInt);
+                            if(_timetowakeupMinInt == 0){ resultMin = 60 - calculateMin;resultHour -= 1;}
+                            else{resultMin = _timetosleepMinInt - calculateMin;}
+
+                        }
+                        if(_timetosleepMinInt < _timetowakeupMinInt ){
+                                calculateMin = Math.abs(0 - _timetowakeupMinInt);
+
+                                resultMin = Math.abs(_timetosleepMinInt - calculateMin);
+                            }
+                    }
+
+
 
                     String resultMinStr;
                     if(resultMin == 0) {

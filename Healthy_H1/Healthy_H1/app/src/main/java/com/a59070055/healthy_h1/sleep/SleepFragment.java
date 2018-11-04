@@ -38,7 +38,7 @@ public class SleepFragment extends Fragment {
 
         db = getActivity().openOrCreateDatabase("my.db", Context.MODE_PRIVATE, null);
 
-        sleepList = getView().findViewById(R.id.sleep_list);
+        sleepList = getView().findViewById(R.id.sleep_sleeplist);
         sleepAdapter = new SleepAdapter(getActivity(), R.layout.fragment_sleep_item, sleepArrayList);
 
         loadSleepData();
@@ -86,7 +86,7 @@ public class SleepFragment extends Fragment {
         });
     }
     private void initEditBtn(){
-        ListView _editBtn = getView().findViewById(R.id.sleep_list);
+        ListView _editBtn = getView().findViewById(R.id.sleep_sleeplist);
         _editBtn.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
