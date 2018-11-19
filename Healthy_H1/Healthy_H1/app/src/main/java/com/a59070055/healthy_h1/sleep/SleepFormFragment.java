@@ -78,8 +78,6 @@ public class SleepFormFragment extends Fragment {
                     int _timetosleepMinInt = Integer.parseInt(_timetosleepSplit[1]);
                     int _timetowakeupHourInt = Integer.parseInt(_timetowakeupSplit[0]);
                     int _timetowakeupMinInt = Integer.parseInt(_timetowakeupSplit[1]);
-                    int resultHour = 0;
-                    int resultMin = 0;
 
                     int calculateHour = 0;
                     int calculateMin = 0;
@@ -106,6 +104,9 @@ public class SleepFormFragment extends Fragment {
                         calculateMin = Math.abs( _timetowakeupMinInt - _timetosleepMinInt);}
                     }
                     else{calculateMin = Math.abs( _timetowakeupMinInt - _timetosleepMinInt);}
+
+
+
                  /*   if(_timetosleepHourInt > _timetowakeupHourInt)
                     {
                         calculateHour = Math.abs(24 - _timetosleepHourInt);

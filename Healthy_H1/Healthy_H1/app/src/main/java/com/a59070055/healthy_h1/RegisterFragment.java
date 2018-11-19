@@ -31,6 +31,7 @@ public class RegisterFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         _Auth = FirebaseAuth.getInstance();
+        //mAuth = FirebaseAuth.getInstance();
         backTologin();
         initRegisterBtn();
     }
@@ -38,39 +39,43 @@ public class RegisterFragment extends Fragment {
     void registerNewUser() {
         EditText _email = getView().findViewById(R.id.register_email);
         EditText _password = getView().findViewById(R.id.register_password);
-        EditText _repassword = getView().findViewById(R.id.register_re_password);
+        EditText _rePassword = getView().findViewById(R.id.register_re_password);
 
         String _emailStr = _email.getText().toString();
         String _passwordStr = _password.getText().toString();
-        String _repasswordStr = _repassword.getText().toString();
+        String _rePasswordStr = _rePassword.getText().toString();
 
-        if (_emailStr.isEmpty() && _passwordStr.isEmpty() && _repasswordStr.isEmpty()) {
+        if (_emailStr.isEmpty() && _passwordStr.isEmpty() && _rePasswordStr.isEmpty()) {
             Toast.makeText(getActivity(), "กรุณากรอกข้อมูล", Toast.LENGTH_LONG).show();
             Log.d("REGISTER_USER", "PLEASE FILL IN THE INFORMATION");
-        } else if (_emailStr.isEmpty() || _passwordStr.isEmpty() || _repasswordStr.isEmpty()) {
+        } else if (_emailStr.isEmpty() || _passwordStr.isEmpty() || _rePasswordStr.isEmpty()) {
             Toast.makeText(getActivity(), "กรุณากรอกข้อมูลให้ครบถ้วน", Toast.LENGTH_LONG).show();
             Log.d("REIGSTER_USER", "FIELD IS EMPTY.");
-        } else if (!(_passwordStr.equals(_repasswordStr)) || !(_repasswordStr.equals(_passwordStr))) {
+        } else if(!(_passwordStr.equals(_rePasswordStr)) || !(_rePasswordStr.equals(_passwordStr))) {
             Toast.makeText(getActivity(), "กรุณากรอก Re-Password ให้ตรงกัน", Toast.LENGTH_LONG).show();
             Log.d("REGISTER_USER", "RE-PASSWORD INCORRECT");
         } else if (!(_passwordStr.length() >= 6)) {
             Toast.makeText(getActivity(), "Password ต้องมีอย่างน้อย 6 ตัวอักษร", Toast.LENGTH_LONG).show();
             Log.d("REGISTER_USER", "PASSWORD NEED LENGTH AT LEAST 6 LONG");
-        }else {
-            _Auth.createUserWithEmailAndPassword(_emailStr, _passwordStr)
-                    .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                        @Override
-                        public void onSuccess(AuthResult authResult) {
-                            sendVerifiedEmail(authResult.getUser());
-                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new LoginFragment()).commit();
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
+        } else {
+            _Auth.createUserWithEmailAndPassword(_emailStr, _passwordStr).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                @Override
+                public void onSuccess(AuthResult authResult) {
+                    sendVerifiedEmail(authResult.getUser());
+                    if(authResult.getUser().isEmailVerified()) {
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new LoginFragment()).commit();
+                    } else {
+                        Toast.makeText(getActivity(), "กรุณายืนยัน email ก่อนเข้าใช้งาน", Toast.LENGTH_LONG);
+                        _Auth.signOut();
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new LoginFragment()).commit();
+                    }
+                }
+            }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     Toast.makeText(getActivity(), "ERROR - " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
-
         }
     }
     private void sendVerifiedEmail(FirebaseUser _user) {

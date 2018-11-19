@@ -56,8 +56,8 @@
                 android:layout_width="368dp"
                 android:layout_height="67dp"
                 android:background="@color/colorPrimary"
-                android:textColor="@android:color/background_light"
                 android:text="@string/register"
+                android:textColor="@android:color/background_light"
                 tools:layout_editor_absoluteX="80dp"
                 tools:layout_editor_absoluteY="243dp" />
 
